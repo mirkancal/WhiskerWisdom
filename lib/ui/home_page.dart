@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 200,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
-                          child: Image.asset(
+                          child: Image.network(
                             'https://cataas.com/cat?timestamp=${DateTime.now().millisecondsSinceEpoch}',
                             fit: BoxFit.cover,
                             height: 200,

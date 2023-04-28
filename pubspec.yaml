@@ -50,6 +50,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/animations/
 
 scripts:
   get: "rm -rf pubspec.lock && flutter pub get"
