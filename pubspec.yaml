@@ -1,0 +1,58 @@
+name: whiskerwisdom
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons:
+  flex_color_scheme: ^7.0.4
+  freezed_annotation:
+  flutter_bloc:
+  hive_flutter:
+    git:
+      url: https://github.com/yura2000/hive.git
+      ref: master
+      path: hive_flutter/
+  connectivity_checker:
+  json_annotation:
+  get_it:
+  injectable:
+  dartz:
+  retrofit: ^4.0.1
+  dio: ^5.1.1
+  lottie: ^2.3.2
+  font_awesome_flutter: ^10.4.0
+  intl: ^0.18.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  freezed:
+  json_serializable:
+  very_good_analysis:
+  injectable_generator:
+  flutter_lints: ^2.0.0
+  hive_generator:
+    git:
+      url: https://github.com/yura2000/hive.git
+      ref: master
+      path: hive_generator/
+  retrofit_generator: ">=5.0.0 <6.0.0"
+
+flutter:
+  uses-material-design: true
+
+scripts:
+  get: "rm -rf pubspec.lock && flutter pub get"
+  gen: "flutter pub run build_runner watch --delete-conflicting-outputs"
+  clean:
+    ios: cd ios && rm -rf Podfile.lock Pods/ && pod install --repo-update && cd ../
