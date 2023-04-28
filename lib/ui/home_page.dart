@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:whiskerwisdom/blocs/cat_fact/cat_fact_bloc.dart';
+import 'package:whiskerwisdom/core/constants/asset_constants.dart';
 import 'package:whiskerwisdom/core/utils/datetime_extensions.dart';
 
 import '../injection.dart';
@@ -43,8 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context, state) {
               return state.map(
                 loading: (_) {
-                  return LottieBuilder.network(
-                    'https://assets9.lottiefiles.com/packages/lf20_xzu7hgpf.json',
+                  return LottieBuilder.asset(
+                    catLottie,
                     height: 200,
                     width: 200,
                   );
@@ -58,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 200,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
+                          child: Image.asset(
                             'https://cataas.com/cat?timestamp=${DateTime.now().millisecondsSinceEpoch}',
                             fit: BoxFit.cover,
                             height: 200,
