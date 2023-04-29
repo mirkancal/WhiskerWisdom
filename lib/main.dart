@@ -7,8 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whiskerwisdom/injection.dart';
 import 'package:whiskerwisdom/ui/home_page.dart';
 
-void main() {
-  configureDependencies();
+Future<void> main() async {
+  await configureDependencies();
   getIt<CatFactBloc>().add(const CatFactEvent.loadFact());
   runApp(const MyApp());
 }

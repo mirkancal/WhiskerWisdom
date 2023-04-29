@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lottie/lottie.dart';
 import 'package:whiskerwisdom/blocs/cat_fact/cat_fact_bloc.dart';
-import 'package:whiskerwisdom/core/constants/asset_constants.dart';
 import 'package:whiskerwisdom/core/utils/datetime_extensions.dart';
+import 'history_page.dart';
 
-import '../injection.dart';
+import 'package:whiskerwisdom/injection.dart';
+
+import 'loading_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -27,6 +28,18 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const HistoryPage();
+              }));
+            },
+            icon: const Icon(
+              Icons.history_edu,
+            ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         elevation: 0,
@@ -44,11 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context, state) {
               return state.map(
                 loading: (_) {
-                  return LottieBuilder.asset(
-                    catLottie,
-                    height: 200,
-                    width: 200,
-                  );
+                  return const LoadingWidget();
                 },
                 loaded: (s) {
                   return Column(
@@ -60,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
                           child: Image.network(
+                            // Cache busting with timestamp
                             'https://cataas.com/cat?timestamp=${DateTime.now().millisecondsSinceEpoch}',
                             fit: BoxFit.cover,
                             height: 200,
@@ -112,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Text(
-                                s.fact.createdAt.toLocalDateString(),
+                                s.fact.createdAt.toLocalDateString,
                                 style: textTheme.bodySmall?.copyWith(
                                   color: colorScheme.onSecondary,
                                 ),

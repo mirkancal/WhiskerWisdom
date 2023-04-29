@@ -17,21 +17,24 @@ class CatFactDTOAdapter extends TypeAdapter<_$_CatFactDTO> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$_CatFactDTO(
-      text: fields[0] as String,
-      createdAt: fields[1] as DateTime,
-      verified: fields[2] as bool,
+      id: fields[0] as String,
+      text: fields[1] as String,
+      createdAt: fields[2] as DateTime,
+      verified: fields[3] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_CatFactDTO obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.text)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.createdAt)
+      ..write(obj.text)
       ..writeByte(2)
+      ..write(obj.createdAt)
+      ..writeByte(3)
       ..write(obj.verified);
   }
 

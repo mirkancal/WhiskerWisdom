@@ -10,9 +10,10 @@ part 'cat_fact_dto.hive.dart';
 class CatFactDTO extends HiveObject with _$CatFactDTO {
   @HiveType(typeId: 1, adapterName: 'CatFactDTOAdapter')
   factory CatFactDTO({
-    @HiveField(0) required String text,
-    @HiveField(1) required DateTime createdAt,
-    @HiveField(2) @Default(false) bool verified,
+    @HiveField(0) @JsonKey(name: '_id') required String id,
+    @HiveField(1) required String text,
+    @HiveField(2) required DateTime createdAt,
+    @HiveField(3) @Default(false) bool verified,
   }) = _CatFactDTO;
 
   CatFactDTO._();
@@ -25,6 +26,7 @@ class CatFactDTO extends HiveObject with _$CatFactDTO {
 extension CatFactDTOX on CatFactDTO {
   CatFact toDomain() {
     return CatFact(
+      id: id,
       text: text,
       createdAt: createdAt,
       verified: verified,

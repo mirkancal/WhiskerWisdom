@@ -8,5 +8,6 @@ final getIt = GetIt.instance;
 @InjectableInit(
   initializerName: 'init',
   preferRelativeImports: true,
+  asExtension: false,
 )
-void configureDependencies() => getIt.init();
+Future<GetIt> configureDependencies() => init(getIt);

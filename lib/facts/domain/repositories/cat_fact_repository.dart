@@ -4,4 +4,5 @@ import 'package:whiskerwisdom/facts/domain/entities/cat_fact.dart';
 
 abstract class CatFactRepository {
   Future<Either<Failure, CatFact>> getRandomCatFact();
+  Future<Either<Failure, List<CatFact>>> fetchCatFactsHistory();
 }

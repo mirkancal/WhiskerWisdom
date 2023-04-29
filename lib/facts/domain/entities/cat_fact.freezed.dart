@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CatFact {
+  String get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   bool get verified => throw _privateConstructorUsedError;
@@ -29,7 +30,7 @@ abstract class $CatFactCopyWith<$Res> {
   factory $CatFactCopyWith(CatFact value, $Res Function(CatFact) then) =
       _$CatFactCopyWithImpl<$Res, CatFact>;
   @useResult
-  $Res call({String text, DateTime createdAt, bool verified});
+  $Res call({String id, String text, DateTime createdAt, bool verified});
 }
 
 /// @nodoc
@@ -45,11 +46,16 @@ class _$CatFactCopyWithImpl<$Res, $Val extends CatFact>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? text = null,
     Object? createdAt = null,
     Object? verified = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -73,7 +79,7 @@ abstract class _$$_CatFactCopyWith<$Res> implements $CatFactCopyWith<$Res> {
       __$$_CatFactCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String text, DateTime createdAt, bool verified});
+  $Res call({String id, String text, DateTime createdAt, bool verified});
 }
 
 /// @nodoc
@@ -86,11 +92,16 @@ class __$$_CatFactCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? text = null,
     Object? createdAt = null,
     Object? verified = null,
   }) {
     return _then(_$_CatFact(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -111,8 +122,13 @@ class __$$_CatFactCopyWithImpl<$Res>
 
 class _$_CatFact implements _CatFact {
   const _$_CatFact(
-      {required this.text, required this.createdAt, required this.verified});
+      {required this.id,
+      required this.text,
+      required this.createdAt,
+      required this.verified});
 
+  @override
+  final String id;
   @override
   final String text;
   @override
@@ -122,7 +138,7 @@ class _$_CatFact implements _CatFact {
 
   @override
   String toString() {
-    return 'CatFact(text: $text, createdAt: $createdAt, verified: $verified)';
+    return 'CatFact(id: $id, text: $text, createdAt: $createdAt, verified: $verified)';
   }
 
   @override
@@ -130,6 +146,7 @@ class _$_CatFact implements _CatFact {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CatFact &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -138,7 +155,7 @@ class _$_CatFact implements _CatFact {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, text, createdAt, verified);
+  int get hashCode => Object.hash(runtimeType, id, text, createdAt, verified);
 
   @JsonKey(ignore: true)
   @override
@@ -149,10 +166,13 @@ class _$_CatFact implements _CatFact {
 
 abstract class _CatFact implements CatFact {
   const factory _CatFact(
-      {required final String text,
+      {required final String id,
+      required final String text,
       required final DateTime createdAt,
       required final bool verified}) = _$_CatFact;
 
+  @override
+  String get id;
   @override
   String get text;
   @override

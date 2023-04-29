@@ -21,10 +21,13 @@ CatFactDTO _$CatFactDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CatFactDTO {
   @HiveField(0)
-  String get text => throw _privateConstructorUsedError;
+  @JsonKey(name: '_id')
+  String get id => throw _privateConstructorUsedError;
   @HiveField(1)
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  String get text => throw _privateConstructorUsedError;
   @HiveField(2)
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @HiveField(3)
   bool get verified => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,9 +43,10 @@ abstract class $CatFactDTOCopyWith<$Res> {
       _$CatFactDTOCopyWithImpl<$Res, CatFactDTO>;
   @useResult
   $Res call(
-      {@HiveField(0) String text,
-      @HiveField(1) DateTime createdAt,
-      @HiveField(2) bool verified});
+      {@HiveField(0) @JsonKey(name: '_id') String id,
+      @HiveField(1) String text,
+      @HiveField(2) DateTime createdAt,
+      @HiveField(3) bool verified});
 }
 
 /// @nodoc
@@ -58,11 +62,16 @@ class _$CatFactDTOCopyWithImpl<$Res, $Val extends CatFactDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? text = null,
     Object? createdAt = null,
     Object? verified = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -88,9 +97,10 @@ abstract class _$$_CatFactDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@HiveField(0) String text,
-      @HiveField(1) DateTime createdAt,
-      @HiveField(2) bool verified});
+      {@HiveField(0) @JsonKey(name: '_id') String id,
+      @HiveField(1) String text,
+      @HiveField(2) DateTime createdAt,
+      @HiveField(3) bool verified});
 }
 
 /// @nodoc
@@ -104,11 +114,16 @@ class __$$_CatFactDTOCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? text = null,
     Object? createdAt = null,
     Object? verified = null,
   }) {
     return _then(_$_CatFactDTO(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -130,9 +145,10 @@ class __$$_CatFactDTOCopyWithImpl<$Res>
 @HiveType(typeId: 1, adapterName: 'CatFactDTOAdapter')
 class _$_CatFactDTO extends _CatFactDTO {
   _$_CatFactDTO(
-      {@HiveField(0) required this.text,
-      @HiveField(1) required this.createdAt,
-      @HiveField(2) this.verified = false})
+      {@HiveField(0) @JsonKey(name: '_id') required this.id,
+      @HiveField(1) required this.text,
+      @HiveField(2) required this.createdAt,
+      @HiveField(3) this.verified = false})
       : super._();
 
   factory _$_CatFactDTO.fromJson(Map<String, dynamic> json) =>
@@ -140,18 +156,22 @@ class _$_CatFactDTO extends _CatFactDTO {
 
   @override
   @HiveField(0)
-  final String text;
+  @JsonKey(name: '_id')
+  final String id;
   @override
   @HiveField(1)
+  final String text;
+  @override
+  @HiveField(2)
   final DateTime createdAt;
   @override
   @JsonKey()
-  @HiveField(2)
+  @HiveField(3)
   final bool verified;
 
   @override
   String toString() {
-    return 'CatFactDTO(text: $text, createdAt: $createdAt, verified: $verified)';
+    return 'CatFactDTO(id: $id, text: $text, createdAt: $createdAt, verified: $verified)';
   }
 
   @override
@@ -159,6 +179,7 @@ class _$_CatFactDTO extends _CatFactDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CatFactDTO &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -168,7 +189,7 @@ class _$_CatFactDTO extends _CatFactDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, text, createdAt, verified);
+  int get hashCode => Object.hash(runtimeType, id, text, createdAt, verified);
 
   @JsonKey(ignore: true)
   @override
@@ -186,9 +207,10 @@ class _$_CatFactDTO extends _CatFactDTO {
 
 abstract class _CatFactDTO extends CatFactDTO {
   factory _CatFactDTO(
-      {@HiveField(0) required final String text,
-      @HiveField(1) required final DateTime createdAt,
-      @HiveField(2) final bool verified}) = _$_CatFactDTO;
+      {@HiveField(0) @JsonKey(name: '_id') required final String id,
+      @HiveField(1) required final String text,
+      @HiveField(2) required final DateTime createdAt,
+      @HiveField(3) final bool verified}) = _$_CatFactDTO;
   _CatFactDTO._() : super._();
 
   factory _CatFactDTO.fromJson(Map<String, dynamic> json) =
@@ -196,12 +218,16 @@ abstract class _CatFactDTO extends CatFactDTO {
 
   @override
   @HiveField(0)
-  String get text;
+  @JsonKey(name: '_id')
+  String get id;
   @override
   @HiveField(1)
-  DateTime get createdAt;
+  String get text;
   @override
   @HiveField(2)
+  DateTime get createdAt;
+  @override
+  @HiveField(3)
   bool get verified;
   @override
   @JsonKey(ignore: true)
